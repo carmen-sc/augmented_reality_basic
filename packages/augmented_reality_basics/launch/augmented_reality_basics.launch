@@ -1,0 +1,13 @@
+<launch>
+    <arg name="veh" doc="Name of vehicle. ex: megaman"/>
+    <arg name="map_file" default="hud.yaml"/>
+    <arg name="node_name" default="augmented_reality_basics_node"/>
+    
+    <group ns="$(arg veh)">
+        <node pkg="augmented_reality_basics" type="node.py"
+              name="$(arg node_name)" output="screen" required="true">
+              <param name="map_name" value="$(arg map_file)"/>
+              <param name="map_path" value="$(find augmented_reality_basics)/maps/$(arg map_file)"/>
+        </node>
+    </group>
+</launch>
